@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashutosh Verma's Portfolio</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom Styles for non-Tailwind elements and base setup */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        :root {
+            /* Define Custom Colors/Variables - UPDATED THEME */
+            --primary-purple: #8b5cf6; /* Tailwind violet-500 */
+            --accent-teal: #14b8a6; /* Tailwind teal-500 */
+            --dark-bg: #1f2937; /* Tailwind gray-800 */
+            --light-bg: #f9fafb; /* Tailwind gray-50 */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* Fixed Header Positioning */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 20;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Fixed Nav Positioning */
+        nav {
+            position: fixed;
+            top: 112px; /* Adjusted to sit below the header on desktop */
+            left: 0;
+            right: 0;
+            z-index: 10;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        /* Adjust body padding for fixed header and nav on desktop */
+        @media (min-width: 768px) {
+            body {
+                padding-top: 156px; /* Header (48px) + Nav (44px) + Spacing */
+            }
+        }
+        
+        /* Adjust body padding for fixed header and nav on mobile (header and nav stack) */
+        @media (max-width: 767px) {
+            body {
+                padding-top: 160px; /* Adjust for stacked fixed elements */
+            }
+            header {
+                 /* Give header more space */
+                 height: 110px;
+            }
+            nav {
+                top: 110px; /* Position nav right under the header */
+            }
+        }
+
+        /* Smooth Scroll Link Focus (to prevent nav covering content) */
+        section:target::before {
+            content: "";
+            display: block;
+            height: 156px; /* Match padding-top */
+            margin-top: -156px; /* Negative margin to pull content back */
+            pointer-events: none;
+        }
+        
+        /* Custom list style for projects */
+        .project-list li > ul {
+            list-style: none;
+            padding-left: 1.5rem;
+            border-left: 2px dashed var(--accent-teal);
+        }
+
+        .project-list li > ul li::before {
+            content: "•";
+            color: var(--accent-teal);
+            font-weight: bold;
+            display: inline-block; 
+            width: 1em;
+            margin-left: -1em;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased">
+
+    <!-- Header (Fixed Top) -->
+    <header class="bg-gray-900 text-white py-4 shadow-xl border-b-4 border-violet-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="text-center md:text-left">
+                <h1 class="text-3xl font-extrabold tracking-tight">Ashutosh Verma's Portfolio</h1>
+                <p class="text-lg font-light text-gray-400">Web Developer | Programmer</p>
+            </div>
+            <div class="social-links mt-3 md:mt-0 space-x-4">
+                <a href="https://linkedin.com" target="_blank" class="text-violet-400 hover:text-violet-300 transition duration-300 font-medium">LinkedIn</a>
+                <a href="https://github.com" target="_blank" class="text-violet-400 hover:text-violet-300 transition duration-300 font-medium">GitHub</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation (Fixed Below Header) -->
+    <nav class="bg-white py-3 border-b border-gray-200">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center space-x-4 sm:space-x-8">
+            <a href="#resume" class="text-gray-600 hover:text-violet-600 font-semibold text-lg transition duration-300 py-1 px-3 rounded-md hover:bg-violet-50">Resume</a>
+            <a href="#biodata" class="text-gray-600 hover:text-violet-600 font-semibold text-lg transition duration-300 py-1 px-3 rounded-md hover:bg-violet-50">Bio-Data</a>
+            <a href="#projects" class="text-gray-600 hover:text-violet-600 font-semibold text-lg transition duration-300 py-1 px-3 rounded-md hover:bg-violet-50">Projects</a>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
+        
+        <!-- Resume Section -->
+        <section id="resume" class="py-12 md:py-16">
+            <h2 class="text-3xl font-bold mb-8 text-violet-600 border-b-4 border-violet-200 pb-2 inline-block">Resume</h2>
+            
+            <div class="bg-white p-6 sm:p-8 rounded-xl shadow-lg border-t-4 border-teal-500 transition duration-500 hover:shadow-2xl">
+                
+                <!-- Career Objective -->
+                <div class="mb-8">
+                    <h3 class="text-2xl font-semibold mb-3 text-gray-700 border-l-4 border-violet-500 pl-3">Career Objective</h3>
+                    <p class="text-gray-600 leading-relaxed italic">
+                        Motivated and detail-oriented Computer Science student with a solid foundation in full stack development, data structures, and backend systems. Proficient in Python, Java, HTML, CSS, JavaScript, SQL, and MongoDB, with hands-on experience in developing web applications using the MERN stack. Eager to leverage technical skills and a passion for problem-solving in a dynamic and growth-oriented IT services or consulting role. Actively seeking opportunities to contribute to real-world projects and continue learning in a collaborative environment.
+                    </p>
+                </div>
+
+                <!-- Education - UPDATED -->
+                <div class="mb-8">
+                    <h3 class="text-2xl font-semibold mb-3 text-gray-700 border-l-4 border-violet-500 pl-3">Education</h3>
+                    <ul class="space-y-3 text-gray-600 list-disc pl-5">
+                        <li><strong>B.E. in Computer Science & Engineering</strong> - Bangalore Institute of Technology, BIT Bengaluru</li>
+                        <li><strong>Higher Secondary Education (CBSE Board)</strong> - Orion School</li>
+                        <li><strong>Secondary Education (ICSE Board)</strong> - Orion School</li>
+                    </ul>
+                </div>
+
+                <!-- Technical Skills -->
+                <div>
+                    <h3 class="text-2xl font-semibold mb-3 text-gray-700 border-l-4 border-violet-500 pl-3">Technical Skills</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="bg-violet-100 text-violet-800 text-sm font-medium px-4 py-1.5 rounded-full shadow-md">Java</span>
+                        <span class="bg-violet-100 text-violet-800 text-sm font-medium px-4 py-1.5 rounded-full shadow-md">Python</span>
+                        <span class="bg-violet-100 text-violet-800 text-sm font-medium px-4 py-1.5 rounded-full shadow-md">C</span>
+                        <span class="bg-teal-100 text-teal-800 text-sm font-medium px-4 py-1.5 rounded-full shadow-md">HTML/CSS/JS</span>
+                        <span class="bg-teal-100 text-teal-800 text-sm font-medium px-4 py-1.5 rounded-full shadow-md">React</span>
+                        <span class="bg-teal-100 text-teal-800 text-sm font-medium px-4 py-1.5 rounded-full shadow-md">MySQL</span>
+                        <span class="bg-teal-100 text-teal-800 text-sm font-medium px-4 py-1.5 rounded-full shadow-md">MongoDB</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bio-Data Section - UPDATED -->
+        <section id="biodata" class="bg-gray-100 py-12 md:py-16 rounded-xl">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold mb-8 text-violet-600 border-b-4 border-violet-300 pb-2 inline-block">Bio-Data</h2>
+                <div class="bg-white p-6 sm:p-8 rounded-xl shadow-lg">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 text-gray-700">
+                        <p><strong>Name:</strong> Ashutosh Verma</p>
+                        <p><strong>Date of Birth:</strong> 21/01/2005</p>
+                        <p><strong>Gender:</strong> Male</p>
+                        <p><strong>Nationality:</strong> Indian</p>
+                        <p><strong>Address:</strong> Bengaluru, Karnataka</p>
+                        <p><strong>Marital Status:</strong> Unmarried</p>
+                        <p><strong>Languages Known:</strong> English, Hindi, Kannada</p>
+                        <p><strong>Hobbies:</strong> Coding, Music, Travel</p>
+                        <p class="col-span-1 sm:col-span-2">
+                            <strong>Email:</strong> <a href="mailto:rogstrix303@gmail.com" class="text-violet-500 hover:underline">rogstrix303@gmail.com</a>
+                        </p>
+                        <p class="col-span-1 sm:col-span-2">
+                            <strong>Phone:</strong> <a href="tel:+919595832107" class="text-violet-500 hover:underline">+91 95958 32107</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section - UPDATED -->
+        <section id="projects" class="py-12 md:py-16">
+            <h2 class="text-3xl font-bold mb-8 text-violet-600 border-b-4 border-violet-200 pb-2 inline-block">Projects</h2>
+            
+            <ul class="space-y-10 project-list">
+                <!-- Project 1: Decentralized Voting System -->
+                <li class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-500">
+                    <strong class="text-xl font-bold text-gray-900 mb-2 block">Decentralized Voting System (DApp)</strong>
+                    <p class="text-sm font-medium text-violet-600 mb-3">Solidity | Web3.js | React | Hardhat</p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>Developed a secure, transparent, and immutable blockchain-based voting application using Solidity smart contracts.</li>
+                        <li>Used Web3.js to connect the React frontend to the Ethereum test network, ensuring real-time ballot updates.</li>
+                        <li>Implemented voter registration and result tabulation logic entirely on the blockchain, eliminating central authority.</li>
+                    </ul>
+                </li>
+
+                <!-- Project 2: High-Performance Caching Layer -->
+                <li class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-500">
+                    <strong class="text-xl font-bold text-gray-900 mb-2 block">High-Performance Caching Layer (LRU/LFU)</strong>
+                    <p class="text-sm font-medium text-teal-600 mb-3">Java | Redis | Spring Boot | ConcurrentHashMap</p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>Designed and implemented a custom in-memory caching layer for a backend service to minimize database load.</li>
+                        <li>Developed algorithms for **Least Recently Used (LRU)** and **Least Frequently Used (LFU)** eviction policies, achieving a $95\%$ cache hit ratio in simulations.</li>
+                        <li>Integrated with Redis for distributed session management and implemented thread-safe operations in Java using concurrent data structures.</li>
+                    </ul>
+                </li>
+
+                <!-- Project 3: Data Pipeline for Real-Time Analytics -->
+                <li class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-500">
+                    <strong class="text-xl font-bold text-gray-900 mb-2 block">Data Pipeline for Real-Time Analytics</strong>
+                    <p class="text-sm font-medium text-violet-600 mb-3">Python | Apache Airflow | Docker | AWS S3 | Spark</p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>Constructed a robust ETL (Extract, Transform, Load) data pipeline to ingest, clean, and analyze log data from multiple sources.</li>
+                        <li>Used Python/Spark for data cleaning and transformation, processing up to $1$ TB of raw data daily.</li>
+                        <li>Orchestrated the pipeline using Apache Airflow to schedule and monitor complex workflow dependencies.</li>
+                        <li>Deployed the entire system using Docker containers on an AWS infrastructure, storing cleaned data in S3 for downstream analytics.</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-sm">&copy; 2025 Ashutosh Verma. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for smooth scrolling -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                // Get the target element
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    // Calculate the offset to account for fixed header/nav
+                    const offset = 156; // Matching padding-top value
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
