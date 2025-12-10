@@ -1,136 +1,246 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ashutosh Verma's Portfolio - Resume</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* Custom Styles for non-Tailwind elements and base setup */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-        
-        :root {
-            /* Define Custom Colors/Variables */
-            --primary-purple: #8b5cf6; /* Tailwind violet-500 */
-            --accent-teal: #14b8a6; /* Tailwind teal-500 */
-        }
+/* assignment_style.css */
 
-        body {
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
-            padding-top: 100px; /* Space for the non-fixed header/nav */
-        }
+/* --- Base Styling --- */
+:root {
+    --primary-color: #007bff; /* Blue for highlights */
+    --accent-color: #28a745; /* Green for subtle accents */
+    --background-color: #f4f4f9; /* Light gray background */
+    --header-footer-bg: #343a40; /* Dark background for header/footer */
+    --text-color: #333; /* Dark text for readability */
+    --light-text-color: #fff; /* White text for dark backgrounds */
+    --card-bg: #ffffff; /* White background for content blocks */
+    --border-color: #e9ecef;
+}
 
-        /* Custom list style for projects (kept in case it's added later) */
-        .project-list li > ul {
-            list-style: none;
-            padding-left: 1.5rem;
-            border-left: 2px dashed var(--accent-teal);
-        }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        .project-list li > ul li::before {
-            content: "•";
-            color: var(--accent-teal);
-            font-weight: bold;
-            display: inline-block; 
-            width: 1em;
-            margin-left: -1em;
-        }
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    padding-top: 100px; /* Space for fixed header/nav */
+}
 
-        /* Basic sticky header/nav for a multi-page feel */
-        header, nav {
-            position: fixed;
-            left: 0;
-            right: 0;
-            z-index: 20;
-        }
+/* --- Header & Navigation --- */
+header {
+    background-color: var(--header-footer-bg);
+    color: var(--light-text-color);
+    text-align: center;
+    padding: 2rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 5px solid var(--primary-color);
+}
 
-        header {
-            top: 0;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
+header h1 {
+    margin-bottom: 0.5rem;
+    font-size: 2.5rem;
+}
 
-        nav {
-            top: 100px; /* Position nav right under the header/branding block */
-            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
-        }
-        
-        /* Adjust body padding for the fixed header/nav stack */
-        @media (min-width: 768px) {
-            body {
-                padding-top: 156px; /* Adjusted based on fixed header/nav heights */
-            }
-        }
-    </style>
-</head>
-<body class="bg-gray-50 text-gray-800 antialiased">
+header p {
+    font-size: 1.1rem;
+    font-weight: 300;
+}
 
-    <header class="bg-gray-900 text-white py-4 shadow-xl border-b-4 border-violet-500">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
-            <div class="text-center md:text-left">
-                <h1 class="text-3xl font-extrabold tracking-tight">Ashutosh Verma's Portfolio</h1>
-                <p class="text-lg font-light text-gray-400">Web Developer | Programmer</p>
-            </div>
-            <div class="social-links mt-3 md:mt-0 space-x-4">
-                <a href="https://linkedin.com" target="_blank" class="text-violet-400 hover:text-violet-300 transition duration-300 font-medium">LinkedIn</a>
-                <a href="https://github.com" target="_blank" class="text-violet-400 hover:text-violet-300 transition duration-300 font-medium">GitHub</a>
-            </div>
-        </div>
-    </header>
+.social-links {
+    margin-top: 1rem;
+}
 
-    <nav class="bg-white py-3 border-b border-gray-200">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center space-x-4 sm:space-x-8">
-            <a href="index.html" class="text-white bg-violet-600 font-semibold text-lg transition duration-300 py-1 px-3 rounded-md">Resume</a>
-            <a href="biodata.html" class="text-gray-600 hover:text-violet-600 font-semibold text-lg transition duration-300 py-1 px-3 rounded-md hover:bg-violet-50">Bio-Data</a>
-            <a href="projects.html" class="text-gray-600 hover:text-violet-600 font-semibold text-lg transition duration-300 py-1 px-3 rounded-md hover:bg-violet-50">Projects</a>
-        </div>
-    </nav>
+.social-links a {
+    color: var(--accent-color);
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
 
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
-        
-        <section id="resume" class="py-12 md:py-16">
-            <h2 class="text-3xl font-bold mb-8 text-violet-600 border-b-4 border-violet-200 pb-2 inline-block">Resume</h2>
-            
-            <div class="bg-white p-6 sm:p-8 rounded-xl shadow-lg border-t-4 border-teal-500 transition duration-500 hover:shadow-2xl">
-                
-                <div class="mb-8">
-                    <h3 class="text-2xl font-semibold mb-3 text-gray-700 border-l-4 border-violet-500 pl-3">Career Objective</h3>
-                    <p class="text-gray-600 leading-relaxed italic">
-                        Motivated and detail-oriented Computer Science student with a solid foundation in full stack development, data structures, and backend systems. Proficient in Python, Java, HTML, CSS, JavaScript, SQL, and MongoDB, with hands-on experience in developing web applications using the MERN stack. Eager to leverage technical skills and a passion for problem-solving in a dynamic and growth-oriented IT services or consulting role. Actively seeking opportunities to contribute to real-world projects and continue learning in a collaborative environment.
-                    </p>
-                </div>
+.social-links a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
 
-                <div class="mb-8">
-                    <h3 class="text-2xl font-semibold mb-3 text-gray-700 border-l-4 border-violet-500 pl-3">Education</h3>
-                    <ul class="space-y-3 text-gray-600 list-disc pl-5">
-                        <li><strong>B.E. in Computer Science & Engineering</strong> - Bangalore Institute of Technology, BIT Bengaluru</li>
-                        <li><strong>Higher Secondary Education (CBSE Board)</strong> - Orion School</li>
-                        <li><strong>Secondary Education (ICSE Board)</strong> - Orion School</li>
-                    </ul>
-                </div>
+nav {
+    background-color: #ffffff;
+    padding: 0.75rem 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 89px; /* Adjust based on header height */
+    z-index: 999;
+}
 
-                <div>
-                    <h3 class="text-2xl font-semibold mb-3 text-gray-700 border-l-4 border-violet-500 pl-3">Technical Skills</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="bg-violet-100 text-violet-800 text-sm font-medium px-4 py-1.5 rounded-full shadow-md">Java</span>
-                        <span class="bg-violet-100 text-violet-800 text-sm font-medium px-4 py-1.5 rounded-full shadow-md">Python</span>
-                        <span class="bg-violet-100 text-violet-800 text-sm font-medium px-4 py-1.5 rounded-full shadow-md">C</span>
-                        <span class="bg-teal-100 text-teal-800 text-sm font-medium px-4 py-1.5 rounded-full shadow-md">HTML/CSS/JS</span>
-                        <span class="bg-teal-100 text-teal-800 text-sm font-medium px-4 py-1.5 rounded-full shadow-md">React</span>
-                        <span class="bg-teal-100 text-teal-800 text-sm font-medium px-4 py-1.5 rounded-full shadow-md">MySQL</span>
-                        <span class="bg-teal-100 text-teal-800 text-sm font-medium px-4 py-1.5 rounded-full shadow-md">MongoDB</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
 
-    </main>
+nav a:hover {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+}
 
-    <footer class="bg-gray-900 text-white py-6 mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p class="text-sm">&copy; 2025 Ashutosh Verma. All rights reserved.</p>
-        </div>
-    </footer>
+/* --- Sections & Content --- */
+section {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-</body>
-</html>
+section:nth-of-type(even) {
+    background-color: var(--border-color); /* Subtle alternating background */
+}
+
+h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    border-bottom: 3px solid var(--primary-color);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.content-block {
+    background-color: var(--card-bg);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+}
+
+.content-block h3 {
+    color: var(--header-footer-bg);
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+    border-left: 4px solid var(--accent-color);
+    padding-left: 10px;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+ul li {
+    margin-bottom: 10px;
+    padding-left: 15px;
+    position: relative;
+}
+
+/* Custom bullet for main lists */
+#resume ul li::before, #biodata ul li::before {
+    content: '•';
+    color: var(--primary-color);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+/* Styling for sub-list in Projects */
+#projects ul li strong {
+    font-size: 1.1rem;
+    color: var(--header-footer-bg);
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+#projects ul ul {
+    margin-top: 5px;
+    padding-left: 20px;
+    border-left: 2px dashed var(--border-color);
+}
+
+#projects ul ul li {
+    font-size: 0.95rem;
+    margin-bottom: 5px;
+}
+
+#projects ul ul li::before {
+    content: '-';
+    color: var(--accent-color);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+/* Resume Specific */
+#resume .content-block {
+    border-top: 3px solid var(--accent-color);
+}
+
+#resume p {
+    margin-bottom: 15px;
+}
+
+/* Bio-Data Specific */
+#biodata ul li strong {
+    min-width: 150px;
+    display: inline-block;
+    color: var(--primary-color);
+}
+
+
+/* --- Footer --- */
+footer {
+    background-color: var(--header-footer-bg);
+    color: var(--light-text-color);
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 40px;
+    font-size: 0.9rem;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    body {
+        padding-top: 150px; /* Adjust for stacked header/nav */
+    }
+
+    header {
+        position: static; /* Make header static on small screens */
+        padding: 1rem 0;
+    }
+    
+    nav {
+        position: static; /* Make nav static on small screens */
+        top: auto;
+        padding: 10px 0;
+    }
+
+    nav a {
+        display: block;
+        margin: 5px 10px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    section {
+        padding: 20px 10px;
+    }
+
+    .content-block {
+        padding: 15px;
+    }
+}
