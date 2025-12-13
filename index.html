@@ -1,0 +1,246 @@
+/* assignment_style.css */
+
+/* --- Base Styling --- */
+:root {
+    --primary-color: #007bff; /* Blue for highlights */
+    --accent-color: #28a745; /* Green for subtle accents */
+    --background-color: #f4f4f9; /* Light gray background */
+    --header-footer-bg: #343a40; /* Dark background for header/footer */
+    --text-color: #333; /* Dark text for readability */
+    --light-text-color: #fff; /* White text for dark backgrounds */
+    --card-bg: #ffffff; /* White background for content blocks */
+    --border-color: #e9ecef;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    padding-top: 100px; /* Space for fixed header/nav */
+}
+
+/* --- Header & Navigation --- */
+header {
+    background-color: var(--header-footer-bg);
+    color: var(--light-text-color);
+    text-align: center;
+    padding: 2rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 5px solid var(--primary-color);
+}
+
+header h1 {
+    margin-bottom: 0.5rem;
+    font-size: 2.5rem;
+}
+
+header p {
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
+.social-links {
+    margin-top: 1rem;
+}
+
+.social-links a {
+    color: var(--accent-color);
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+nav {
+    background-color: #ffffff;
+    padding: 0.75rem 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 89px; /* Adjust based on header height */
+    z-index: 999;
+}
+
+nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+}
+
+/* --- Sections & Content --- */
+section {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+section:nth-of-type(even) {
+    background-color: var(--border-color); /* Subtle alternating background */
+}
+
+h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    border-bottom: 3px solid var(--primary-color);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.content-block {
+    background-color: var(--card-bg);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+}
+
+.content-block h3 {
+    color: var(--header-footer-bg);
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+    border-left: 4px solid var(--accent-color);
+    padding-left: 10px;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+ul li {
+    margin-bottom: 10px;
+    padding-left: 15px;
+    position: relative;
+}
+
+/* Custom bullet for main lists */
+#resume ul li::before, #biodata ul li::before {
+    content: '•';
+    color: var(--primary-color);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+/* Styling for sub-list in Projects */
+#projects ul li strong {
+    font-size: 1.1rem;
+    color: var(--header-footer-bg);
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+#projects ul ul {
+    margin-top: 5px;
+    padding-left: 20px;
+    border-left: 2px dashed var(--border-color);
+}
+
+#projects ul ul li {
+    font-size: 0.95rem;
+    margin-bottom: 5px;
+}
+
+#projects ul ul li::before {
+    content: '-';
+    color: var(--accent-color);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+/* Resume Specific */
+#resume .content-block {
+    border-top: 3px solid var(--accent-color);
+}
+
+#resume p {
+    margin-bottom: 15px;
+}
+
+/* Bio-Data Specific */
+#biodata ul li strong {
+    min-width: 150px;
+    display: inline-block;
+    color: var(--primary-color);
+}
+
+
+/* --- Footer --- */
+footer {
+    background-color: var(--header-footer-bg);
+    color: var(--light-text-color);
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 40px;
+    font-size: 0.9rem;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    body {
+        padding-top: 150px; /* Adjust for stacked header/nav */
+    }
+
+    header {
+        position: static; /* Make header static on small screens */
+        padding: 1rem 0;
+    }
+    
+    nav {
+        position: static; /* Make nav static on small screens */
+        top: auto;
+        padding: 10px 0;
+    }
+
+    nav a {
+        display: block;
+        margin: 5px 10px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    section {
+        padding: 20px 10px;
+    }
+
+    .content-block {
+        padding: 15px;
+    }
+}
