@@ -1,246 +1,264 @@
-/* assignment_style.css */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sandeep Singh's Portfolio</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom Styles for non-Tailwind elements and base setup */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        :root {
+            /* Define Custom Colors/Variables */
+            --primary-blue: #3b82f6; /* Tailwind blue-500 */
+            --accent-green: #10b981; /* Tailwind emerald-500 */
+            --dark-bg: #1f2937; /* Tailwind gray-800 */
+            --light-bg: #f9fafb; /* Tailwind gray-50 */
+        }
 
-/* --- Base Styling --- */
-:root {
-    --primary-color: #007bff; /* Blue for highlights */
-    --accent-color: #28a745; /* Green for subtle accents */
-    --background-color: #f4f4f9; /* Light gray background */
-    --header-footer-bg: #343a40; /* Dark background for header/footer */
-    --text-color: #333; /* Dark text for readability */
-    --light-text-color: #fff; /* White text for dark backgrounds */
-    --card-bg: #ffffff; /* White background for content blocks */
-    --border-color: #e9ecef;
-}
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+        /* Fixed Header Positioning */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 20;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    color: var(--text-color);
-    background-color: var(--background-color);
-    padding-top: 100px; /* Space for fixed header/nav */
-}
+        /* Fixed Nav Positioning */
+        nav {
+            position: fixed;
+            top: 112px; /* Adjusted to sit below the header on desktop */
+            left: 0;
+            right: 0;
+            z-index: 10;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+        }
 
-/* --- Header & Navigation --- */
-header {
-    background-color: var(--header-footer-bg);
-    color: var(--light-text-color);
-    text-align: center;
-    padding: 2rem 0;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    border-bottom: 5px solid var(--primary-color);
-}
+        /* Adjust body padding for fixed header and nav on desktop */
+        @media (min-width: 768px) {
+            body {
+                padding-top: 156px; /* Header (48px) + Nav (44px) + Spacing */
+            }
+        }
+        
+        /* Adjust body padding for fixed header and nav on mobile (header and nav stack) */
+        @media (max-width: 767px) {
+            body {
+                padding-top: 160px; /* Adjust for stacked fixed elements */
+            }
+            header {
+                 /* Give header more space */
+                 height: 110px;
+            }
+            nav {
+                top: 110px; /* Position nav right under the header */
+            }
+        }
 
-header h1 {
-    margin-bottom: 0.5rem;
-    font-size: 2.5rem;
-}
+        /* Smooth Scroll Link Focus (to prevent nav covering content) */
+        section:target::before {
+            content: "";
+            display: block;
+            height: 156px; /* Match padding-top */
+            margin-top: -156px; /* Negative margin to pull content back */
+            pointer-events: none;
+        }
+        
+        /* Custom list style for projects */
+        .project-list li > ul {
+            list-style: none;
+            padding-left: 1.5rem;
+            border-left: 2px dashed var(--accent-green);
+        }
 
-header p {
-    font-size: 1.1rem;
-    font-weight: 300;
-}
+        .project-list li > ul li::before {
+            content: "•";
+            color: var(--accent-green);
+            font-weight: bold;
+            display: inline-block; 
+            width: 1em;
+            margin-left: -1em;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased">
 
-.social-links {
-    margin-top: 1rem;
-}
+    <!-- Header (Fixed Top) -->
+    <header class="bg-gray-900 text-white py-4 shadow-xl border-b-4 border-blue-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="text-center md:text-left">
+                <h1 class="text-3xl font-extrabold tracking-tight">Sandeep Singh's Portfolio</h1>
+                <p class="text-lg font-light text-gray-400">Web Developer | Programmer</p>
+            </div>
+            <div class="social-links mt-3 md:mt-0 space-x-4">
+                <a href="https://linkedin.com" target="_blank" class="text-blue-400 hover:text-blue-300 transition duration-300 font-medium">LinkedIn</a>
+                <a href="https://github.com" target="_blank" class="text-blue-400 hover:text-blue-300 transition duration-300 font-medium">GitHub</a>
+            </div>
+        </div>
+    </header>
 
-.social-links a {
-    color: var(--accent-color);
-    text-decoration: none;
-    margin: 0 10px;
-    font-weight: bold;
-    transition: color 0.3s ease-in-out;
-}
+    <!-- Navigation (Fixed Below Header) -->
+    <nav class="bg-white py-3 border-b border-gray-200">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center space-x-4 sm:space-x-8">
+            <a href="#resume" class="text-gray-600 hover:text-blue-600 font-semibold text-lg transition duration-300 py-1 px-3 rounded-md hover:bg-blue-50">Resume</a>
+            <a href="#biodata" class="text-gray-600 hover:text-blue-600 font-semibold text-lg transition duration-300 py-1 px-3 rounded-md hover:bg-blue-50">Bio-Data</a>
+            <a href="#projects" class="text-gray-600 hover:text-blue-600 font-semibold text-lg transition duration-300 py-1 px-3 rounded-md hover:bg-blue-50">Projects</a>
+        </div>
+    </nav>
 
-.social-links a:hover {
-    color: var(--primary-color);
-    text-decoration: underline;
-}
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
+        
+        <!-- Resume Section -->
+        <section id="resume" class="py-12 md:py-16">
+            <h2 class="text-3xl font-bold mb-8 text-blue-600 border-b-4 border-blue-200 pb-2 inline-block">Resume</h2>
+            
+            <div class="bg-white p-6 sm:p-8 rounded-xl shadow-lg border-t-4 border-emerald-500 transition duration-500 hover:shadow-2xl">
+                
+                <!-- Career Objective -->
+                <div class="mb-8">
+                    <h3 class="text-2xl font-semibold mb-3 text-gray-700 border-l-4 border-blue-500 pl-3">Career Objective</h3>
+                    <p class="text-gray-600 leading-relaxed italic">
+                        Motivated and detail-oriented Computer Science student with a solid foundation in full stack development, data structures, and backend systems. Proficient in Python, Java, HTML, CSS, JavaScript, SQL, and MongoDB, with hands-on experience in developing web applications using the MERN stack. Eager to leverage technical skills and a passion for problem-solving in a dynamic and growth-oriented IT services or consulting role. Actively seeking opportunities to contribute to real-world projects and continue learning in a collaborative environment.
+                    </p>
+                </div>
 
-nav {
-    background-color: #ffffff;
-    padding: 0.75rem 0;
-    text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    width: 100%;
-    top: 89px; /* Adjust based on header height */
-    z-index: 999;
-}
+                <!-- Education -->
+                <div class="mb-8">
+                    <h3 class="text-2xl font-semibold mb-3 text-gray-700 border-l-4 border-blue-500 pl-3">Education</h3>
+                    <ul class="space-y-3 text-gray-600 list-disc pl-5">
+                        <li><strong>B.E. in Computer Science & Engineering</strong> - Bangalore Institute of Technology, BIT Bengaluru</li>
+                        <li><strong>Higher Secondary Education (CBSE Board)</strong> - Delhi Public School</li>
+                        <li><strong>Secondary Education (ICSE Board)</strong> - Delhi Public School</li>
+                    </ul>
+                </div>
 
-nav a {
-    color: var(--text-color);
-    text-decoration: none;
-    margin: 0 15px;
-    font-weight: 600;
-    padding: 5px 10px;
-    border-radius: 4px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
+                <!-- Technical Skills -->
+                <div>
+                    <h3 class="text-2xl font-semibold mb-3 text-gray-700 border-l-4 border-blue-500 pl-3">Technical Skills</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="bg-blue-100 text-blue-800 text-sm font-medium px-4 py-1.5 rounded-full shadow-md">Java</span>
+                        <span class="bg-blue-100 text-blue-800 text-sm font-medium px-4 py-1.5 rounded-full shadow-md">Python</span>
+                        <span class="bg-blue-100 text-blue-800 text-sm font-medium px-4 py-1.5 rounded-full shadow-md">C</span>
+                        <span class="bg-emerald-100 text-emerald-800 text-sm font-medium px-4 py-1.5 rounded-full shadow-md">HTML/CSS/JS</span>
+                        <span class="bg-emerald-100 text-emerald-800 text-sm font-medium px-4 py-1.5 rounded-full shadow-md">React</span>
+                        <span class="bg-emerald-100 text-emerald-800 text-sm font-medium px-4 py-1.5 rounded-full shadow-md">MySQL</span>
+                        <span class="bg-emerald-100 text-emerald-800 text-sm font-medium px-4 py-1.5 rounded-full shadow-md">MongoDB</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-nav a:hover {
-    background-color: var(--primary-color);
-    color: var(--light-text-color);
-}
+        <!-- Bio-Data Section -->
+        <section id="biodata" class="bg-gray-100 py-12 md:py-16 rounded-xl">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold mb-8 text-blue-600 border-b-4 border-blue-300 pb-2 inline-block">Bio-Data</h2>
+                <div class="bg-white p-6 sm:p-8 rounded-xl shadow-lg">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 text-gray-700">
+                        <p><strong>Name:</strong> Sandeep Singh</p>
+                        <p><strong>Date of Birth:</strong> 30/03/2004</p>
+                        <p><strong>Gender:</strong> Male</p>
+                        <p><strong>Nationality:</strong> Indian</p>
+                        <p><strong>Address:</strong> Bengaluru, Karnataka</p>
+                        <p><strong>Marital Status:</strong> Unmarried</p>
+                        <p><strong>Languages Known:</strong> English, Hindi, Kannada</p>
+                        <p><strong>Hobbies:</strong> Coding, Music, Travel</p>
+                        <p class="col-span-1 sm:col-span-2">
+                            <strong>Email:</strong> <a href="mailto:sandeepjyala0@gmail.com" class="text-blue-500 hover:underline">sandeepjyala0@gmail.com</a>
+                        </p>
+                        <p class="col-span-1 sm:col-span-2">
+                            <strong>Phone:</strong> <a href="tel:+918306921665" class="text-blue-500 hover:underline">+91 83069 21665</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-/* --- Sections & Content --- */
-section {
-    padding: 40px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
+        <!-- Projects Section -->
+        <section id="projects" class="py-12 md:py-16">
+            <h2 class="text-3xl font-bold mb-8 text-blue-600 border-b-4 border-blue-200 pb-2 inline-block">Projects</h2>
+            
+            <ul class="space-y-10 project-list">
+                <!-- Project 1: Microservices E-commerce Backend -->
+                <li class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-500">
+                    <strong class="text-xl font-bold text-gray-900 mb-2 block">Microservices E-commerce Backend</strong>
+                    <p class="text-sm font-medium text-blue-600 mb-3">Node.js | React | MongoDB | Kafka | Express</p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>Engineered a scalable e-commerce platform using a microservices architecture.</li>
+                        <li>Developed core services (Product, Order, User) using Node.js and Express, connected via MongoDB.</li>
+                        <li>Implemented inter-service communication and asynchronous order processing using Apache Kafka message queues, handling up to $1000$ transactions per second.</li>
+                        <li>Designed a responsive inventory dashboard using React for real-time stock management.</li>
+                    </ul>
+                </li>
 
-section:nth-of-type(even) {
-    background-color: var(--border-color); /* Subtle alternating background */
-}
+                <!-- Project 2: Real-Time Twitter Sentiment Analyzer -->
+                <li class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-500">
+                    <strong class="text-xl font-bold text-gray-900 mb-2 block">Real-Time Twitter Sentiment Analyzer</strong>
+                    <p class="text-sm font-medium text-emerald-600 mb-3">Python | TensorFlow | NLTK | Flask | PostgreSQL</p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>Developed an AI tool to analyze and classify public sentiment from social media data in real time.</li>
+                        <li>Utilized Python, NLTK for pre-processing, and a trained TensorFlow model (LSTM) for sentiment classification (Positive/Negative/Neutral).</li>
+                        <li>Built a user-friendly Flask API to stream data and visualize results on a web dashboard, achieving $88\%$ accuracy on the test set.</li>
+                    </ul>
+                </li>
 
-h2 {
-    font-size: 2rem;
-    color: var(--primary-color);
-    margin-bottom: 25px;
-    border-bottom: 3px solid var(--primary-color);
-    display: inline-block;
-    padding-bottom: 5px;
-}
+                <!-- Project 3: Automated CI/CD Pipeline -->
+                <li class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-500">
+                    <strong class="text-xl font-bold text-gray-900 mb-2 block">Automated CI/CD Pipeline</strong>
+                    <p class="text-sm font-medium text-blue-600 mb-3">Docker | Kubernetes | Jenkins | AWS (ECR, EKS) | Terraform</p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>Set up a complete automated CI/CD pipeline for a complex web application, reducing deployment time from $1$ hour to under $5$ minutes.</li>
+                        <li>Containerized the application using Docker and managed orchestration with Kubernetes (EKS on AWS).</li>
+                        <li>Used Jenkins for continuous integration, automating build, test, and image push to AWS ECR.</li>
+                        <li>Defined and provisioned infrastructure (VPC, Load Balancer, EKS cluster) as code using Terraform.</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
 
-.content-block {
-    background-color: var(--card-bg);
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-    margin-bottom: 20px;
-}
+    </main>
 
-.content-block h3 {
-    color: var(--header-footer-bg);
-    margin-top: 15px;
-    margin-bottom: 10px;
-    font-size: 1.4rem;
-    border-left: 4px solid var(--accent-color);
-    padding-left: 10px;
-}
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-sm">&copy; 2025 Sandeep Singh. All rights reserved.</p>
+        </div>
+    </footer>
 
-ul {
-    list-style-type: none;
-    padding-left: 0;
-}
+    <!-- JavaScript for smooth scrolling (kept from original) -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                // Get the target element
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
 
-ul li {
-    margin-bottom: 10px;
-    padding-left: 15px;
-    position: relative;
-}
+                if (targetElement) {
+                    // Calculate the offset to account for fixed header/nav
+                    const offset = 156; // Matching padding-top value
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - offset;
 
-/* Custom bullet for main lists */
-#resume ul li::before, #biodata ul li::before {
-    content: '•';
-    color: var(--primary-color);
-    font-weight: bold;
-    display: inline-block;
-    width: 1em;
-    margin-left: -1em;
-}
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
 
-/* Styling for sub-list in Projects */
-#projects ul li strong {
-    font-size: 1.1rem;
-    color: var(--header-footer-bg);
-    display: block;
-    margin-top: 15px;
-    margin-bottom: 5px;
-}
+        // Removed unused IntersectionObserver as there were no associated animations to control.
+    </script>
 
-#projects ul ul {
-    margin-top: 5px;
-    padding-left: 20px;
-    border-left: 2px dashed var(--border-color);
-}
-
-#projects ul ul li {
-    font-size: 0.95rem;
-    margin-bottom: 5px;
-}
-
-#projects ul ul li::before {
-    content: '-';
-    color: var(--accent-color);
-    font-weight: bold;
-    display: inline-block;
-    width: 1em;
-    margin-left: -1em;
-}
-
-/* Resume Specific */
-#resume .content-block {
-    border-top: 3px solid var(--accent-color);
-}
-
-#resume p {
-    margin-bottom: 15px;
-}
-
-/* Bio-Data Specific */
-#biodata ul li strong {
-    min-width: 150px;
-    display: inline-block;
-    color: var(--primary-color);
-}
-
-
-/* --- Footer --- */
-footer {
-    background-color: var(--header-footer-bg);
-    color: var(--light-text-color);
-    text-align: center;
-    padding: 1rem 0;
-    margin-top: 40px;
-    font-size: 0.9rem;
-}
-
-/* --- Responsive Design --- */
-@media (max-width: 768px) {
-    body {
-        padding-top: 150px; /* Adjust for stacked header/nav */
-    }
-
-    header {
-        position: static; /* Make header static on small screens */
-        padding: 1rem 0;
-    }
-    
-    nav {
-        position: static; /* Make nav static on small screens */
-        top: auto;
-        padding: 10px 0;
-    }
-
-    nav a {
-        display: block;
-        margin: 5px 10px;
-    }
-
-    h1 {
-        font-size: 2rem;
-    }
-
-    h2 {
-        font-size: 1.75rem;
-    }
-
-    section {
-        padding: 20px 10px;
-    }
-
-    .content-block {
-        padding: 15px;
-    }
-}
+</body>
+</html>
